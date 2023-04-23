@@ -31,19 +31,29 @@ void createArchitecture(String type) {
       architecture = _BlocAppArchitectureGenerator();
       break;
     case 'provider_app':
+    case 'provider':
       architecture = _ProviderAppArchitectureGenerator();
       break;
     case 'getx_app':
+    case 'getx':
       architecture = _GetXAppArchitectureGenerator();
       break;
     case 'mvc_app':
+    case 'mvc':
       architecture = _MVCAppArchitectureGenerator();
       break;
     case 'mvvm_app':
+    case 'mvvm':
       architecture = _MVVMAppArchitectureGenerator();
       break;
     case 'mvp_app':
+    case 'mvp':
       architecture = _MVPAppArchitectureGenerator();
+      break;
+    case 'clean_app':
+    case 'clean_architecture':
+    case 'clean_arch_app':
+      architecture = _CleanAppArchitectureGenerator();
       break;
   }
 

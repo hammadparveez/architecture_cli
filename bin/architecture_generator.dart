@@ -103,3 +103,31 @@ class _MVPAppArchitectureGenerator implements _ArchitectureGenerator {
     Directory('utils')..createSync(recursive: true);
   }
 }
+
+///
+/// Clean App ARCHITECTURE
+///
+class _CleanAppArchitectureGenerator implements _ArchitectureGenerator {
+  _generate() {
+    final dataDir = Directory('data')..createSync(recursive: true);
+    final domainDir = Directory('domain')..createSync(recursive: true);
+    final presentationDir = Directory('presentation')
+      ..createSync(recursive: true);
+    Directory('services')..createSync(recursive: true);
+    Directory('utils')..createSync(recursive: true);
+    //Data -> repositories, datasources, models
+    ['repositories', 'datasources', 'models'].forEach(
+      (i) => Directory(join(dataDir.path, i)).createSync(),
+    );
+
+    //Domain -> entities, repositories, usecases
+    ['entities', 'repositories', 'usecases'].forEach(
+      (i) => Directory(join(domainDir.path, i)).createSync(),
+    );
+
+    //Presentation -> pages, viewmodels, widgets
+    ['pages', 'viewmodels', 'widgets'].forEach(
+      (i) => Directory(join(presentationDir.path, i)).createSync(),
+    );
+  }
+}
