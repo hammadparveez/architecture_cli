@@ -24,12 +24,76 @@ $ dart pub global activate architecture_cli
 ## Usage
 
 To create a new architecture structure, run the following command:
+```console style="background-color: black;"
 $ architecture_cli --create [name]
+```
 
 -Alternatively, you can use the following commands:
+```console style="background-color: black;"
 $ folder_cli --create [name]
+```
+```console style="background-color: black;"
 $ arch_cli --create [name]
+```
 Where [name] is the name of the desired architecture pattern. For example:
+
+```console style="background-color: black;"
+$ architecture_cli --create mvc
+```
+
+After generating the architecture structure, you will find a Markdown file in the generated folder structure that provides guidelines for each folder's intended purpose.
+
+## Examples
+
+Here are some examples of the commands you can use to generate different architecture patterns:
+
+- Generate a GetX architecture structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create getx
+```
+
+- Generate a Clean Architecture structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create clean_architecture
+```
+
+- Generate an MVP architecture structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create mvp
+```
+
+- Generate a Provider architecture structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create provider
+```
+- Generate a BLoC structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create bloc
+```
+
+- Generate a BLoC App structure:
+
+```console style="background-color: black;"
+$ architecture_cli --create bloc_app
+```
+
+## Support
+
+If you find this package helpful, please consider buying me a coffee!
+
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hammadparveez)
+
+
+
+
+
+
+
 
 
 
