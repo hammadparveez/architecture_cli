@@ -21,26 +21,26 @@ architecture_cli currently supports the following software architecture patterns
 
 You can install architecture_cli from [pub.dev](https://pub.dev/packages/architecture_cli) by running the following command:
 ```console style="background-color: black;"
-$ dart pub global activate architecture_cli
+dart pub global activate architecture_cli
 ```
 ## Usage
 
 To create a new architecture structure, run the following command:
 ```console style="background-color: black;"
-$ architecture_cli --create [name]
+architecture_cli --create [name]
 ```
 
 - Alternatively, you can use the following commands:
 ```console style="background-color: black;"
-$ folder_cli --create [name]
+folder_cli --create [name]
 ```
 ```console style="background-color: black;"
-$ arch_cli --create [name]
+arch_cli --create [name]
 ```
 Where [name] is the name of the desired architecture pattern. For Example:
 
 ```console style="background-color: black;"
-$ architecture_cli --create mvc
+architecture_cli --create mvc
 ```
 
 After generating the architecture structure, you will find a Markdown file in the generated folder structure that provides guidelines for each folder's intended purpose.
@@ -52,36 +52,36 @@ Here are some examples of the commands you can use to generate different archite
 - Generate a GetX architecture structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create getx
+architecture_cli --create getx
 ```
 
 - Generate a Clean Architecture structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create clean_architecture
+architecture_cli --create clean_architecture
 ```
 
 - Generate an MVP architecture structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create mvp
+architecture_cli --create mvp
 ```
 
 - Generate a Provider architecture structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create provider
+architecture_cli --create provider
 ```
 - Generate a BLoC structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create bloc
+architecture_cli --create bloc
 ```
 
 - Generate a BLoC App structure:
 
 ```console style="background-color: black;"
-$ architecture_cli --create bloc_app
+architecture_cli --create bloc_app
 ```
 
 ## Support
@@ -95,15 +95,3 @@ Thank you for your support!
 — Hammad Parveez
 
 <a href="https://github.com/hammadparveez/" ><img src="https://avatars.githubusercontent.com/u/33895363?v=4" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;"> </a>
-
-
-
-
-
-
-
-
-
-
-
-
