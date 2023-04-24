@@ -4,6 +4,11 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 
+import 'readme/bloc_app_readme.dart';
+import 'readme/bloc_readme.dart';
+import 'readme/getx_readme.dart';
+import 'readme/provider_readme.dart';
+
 part 'architecture_generator.dart';
 
 void main(List<String> arguments) {

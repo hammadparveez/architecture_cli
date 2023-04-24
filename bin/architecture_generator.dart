@@ -7,10 +7,17 @@ abstract class _ArchitectureGenerator {
     return Directory(hasLibDirectory ? 'lib/$path' : path)
       ..createSync(recursive: true);
   }
+
+  File _generateFile(content, {required String architectureName}) {
+    return File(
+        hasLibDirectory ? 'lib/$architectureName' : '$architectureName.md')
+      ..writeAsString(content);
+  }
 }
 
 class _BlocArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(blocReadMe, architectureName: 'bloc');
     _generateDirectory('bloc');
     final subPaths = ['blocs', 'events', 'states'];
     for (final path in subPaths) _generateDirectory('bloc/$path');
@@ -22,7 +29,8 @@ class _BlocArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _BlocAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    final dir = _generateDirectory('bloc');
+    _generateFile(blocAppReadMe, architectureName: 'bloc_app');
+    _generateDirectory('bloc');
     _generateDirectory('models');
     _generateDirectory('repository');
     _generateDirectory('services');
@@ -41,6 +49,7 @@ class _BlocAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _ProviderAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(providerReadMe, architectureName: 'provider_app');
     _generateDirectory('provider');
     _generateDirectory('models');
     _generateDirectory('repository');
@@ -57,6 +66,7 @@ class _ProviderAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _GetXAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(getXReadMe, architectureName: 'getx_app');
     _generateDirectory('models');
     _generateDirectory('bindings');
     _generateDirectory('controllers');
