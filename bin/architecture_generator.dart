@@ -2,132 +2,133 @@ part of 'architecture_cli.dart';
 
 abstract class _ArchitectureGenerator {
   _generate();
+  final hasLibDirectory = Directory('lib').existsSync();
+  Directory _generateDirectory(String path) {
+    return Directory(hasLibDirectory ? 'lib/$path' : path)
+      ..createSync(recursive: true);
+  }
 }
 
-class _BlocArchitectureGenerator implements _ArchitectureGenerator {
+class _BlocArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    final dir = Directory('bloc')..createSync(recursive: true);
+    _generateDirectory('bloc');
     final subPaths = ['blocs', 'events', 'states'];
-    for (final i in subPaths) {
-      Directory(join(dir.path, i))..createSync();
-    }
+    for (final path in subPaths) _generateDirectory('bloc/$path');
   }
 }
 
 ///
 /// BLoC APP ARCHITECTURE
 ///
-class _BlocAppArchitectureGenerator implements _ArchitectureGenerator {
+class _BlocAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    final dir = Directory('bloc')..createSync(recursive: true);
-    Directory('models')..createSync(recursive: true);
-    Directory('repository')..createSync(recursive: true);
-    Directory('services')..createSync(recursive: true);
-    Directory('screens')..createSync(recursive: true);
-    Directory('widgets')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
-    Directory('routes')..createSync(recursive: true);
+    final dir = _generateDirectory('bloc');
+    _generateDirectory('models');
+    _generateDirectory('repository');
+    _generateDirectory('services');
+    _generateDirectory('screens');
+    _generateDirectory('widgets');
+    _generateDirectory('utils');
+    _generateDirectory('routes');
 
     final subPaths = ['blocs', 'events', 'states'];
-    for (final i in subPaths) {
-      Directory(join(dir.path, i))..createSync();
-    }
+    for (final path in subPaths) _generateDirectory('bloc/$path');
   }
 }
 
 ///
 /// Provider APP ARCHITECTURE
 ///
-class _ProviderAppArchitectureGenerator implements _ArchitectureGenerator {
+class _ProviderAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    Directory('provider')..createSync(recursive: true);
-    Directory('models')..createSync(recursive: true);
-    Directory('repository')..createSync(recursive: true);
-    Directory('services')..createSync(recursive: true);
-    Directory('screens')..createSync(recursive: true);
-    Directory('widgets')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
-    Directory('routes')..createSync(recursive: true);
+    _generateDirectory('provider');
+    _generateDirectory('models');
+    _generateDirectory('repository');
+    _generateDirectory('services');
+    _generateDirectory('screens');
+    _generateDirectory('widgets');
+    _generateDirectory('utils');
+    _generateDirectory('routes');
   }
 }
 
 ///
 /// GetX APP ARCHITECTURE
 ///
-class _GetXAppArchitectureGenerator implements _ArchitectureGenerator {
+class _GetXAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    Directory('models')..createSync(recursive: true);
-    Directory('bindings')..createSync(recursive: true);
-    Directory('controllers')..createSync(recursive: true);
-    Directory('repository')..createSync(recursive: true);
-    Directory('services')..createSync(recursive: true);
-    Directory('views')..createSync(recursive: true);
-    Directory('routes')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
+    _generateDirectory('models');
+    _generateDirectory('bindings');
+    _generateDirectory('controllers');
+    _generateDirectory('repository');
+    _generateDirectory('services');
+    _generateDirectory('views');
+    _generateDirectory('routes');
+    _generateDirectory('utils');
   }
 }
 
 ///
 /// MVC APP ARCHITECTURE
 ///
-class _MVCAppArchitectureGenerator implements _ArchitectureGenerator {
+class _MVCAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    Directory('models')..createSync(recursive: true);
-    Directory('controllers')..createSync(recursive: true);
-    Directory('views')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
+    _generateDirectory('models');
+    _generateDirectory('controllers');
+    _generateDirectory('views');
+    _generateDirectory('utils');
   }
 }
 
 ///
 /// MVVM APP ARCHITECTURE
 ///
-class _MVVMAppArchitectureGenerator implements _ArchitectureGenerator {
+class _MVVMAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    Directory('models')..createSync(recursive: true);
-    Directory('viewmodels')..createSync(recursive: true);
-    Directory('views')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
-    Directory('services')..createSync(recursive: true);
+    _generateDirectory('models');
+    _generateDirectory('viewmodels');
+    _generateDirectory('views');
+    _generateDirectory('utils');
+    _generateDirectory('services');
   }
 }
 
 ///
 /// MVP APP ARCHITECTURE
 ///
-class _MVPAppArchitectureGenerator implements _ArchitectureGenerator {
+class _MVPAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    Directory('models')..createSync(recursive: true);
-    Directory('presenter')..createSync(recursive: true);
-    Directory('views')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
+    _generateDirectory('models');
+    _generateDirectory('presenter');
+    _generateDirectory('views');
+    _generateDirectory('utils');
   }
 }
 
 ///
 /// Clean App ARCHITECTURE
 ///
-class _CleanAppArchitectureGenerator implements _ArchitectureGenerator {
+class _CleanAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    final dataDir = Directory('data')..createSync(recursive: true);
-    final domainDir = Directory('domain')..createSync(recursive: true);
-    final presentationDir = Directory('presentation')
-      ..createSync(recursive: true);
-    Directory('services')..createSync(recursive: true);
-    Directory('utils')..createSync(recursive: true);
+    _generateDirectory('data');
+    _generateDirectory('domain');
+    _generateDirectory('presentation');
+    _generateDirectory('services');
+    _generateDirectory('utils');
+
     //Data -> repositories, datasources, models
     ['repositories', 'datasources', 'models'].forEach(
-      (i) => Directory(join(dataDir.path, i)).createSync(),
+      (path) => _generateDirectory('data/$path'),
     );
 
     //Domain -> entities, repositories, usecases
     ['entities', 'repositories', 'usecases'].forEach(
-      (i) => Directory(join(domainDir.path, i)).createSync(),
+      (path) => _generateDirectory('domain/$path'),
     );
 
     //Presentation -> pages, viewmodels, widgets
     ['pages', 'viewmodels', 'widgets'].forEach(
-      (i) => Directory(join(presentationDir.path, i)).createSync(),
+      (path) => _generateDirectory('presentation/$path'),
     );
   }
 }

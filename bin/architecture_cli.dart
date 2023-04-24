@@ -3,21 +3,43 @@ library architecture_cli;
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:path/path.dart';
 
 part 'architecture_generator.dart';
 
 void main(List<String> arguments) {
   var parser = ArgParser()
-    ..addCommand(
-        'create',
-        ArgParser()
-          ..addOption('type',
-              abbr: 't', help: 'The type of folder structure to generate'));
-  final results = parser.parse(arguments);
-  if (results.command?.name == 'create') {
-    final type = results.command!.rest.first;
-    createArchitecture(type.toLowerCase());
+    ..addOption('create',
+        abbr: 'c',
+        help:
+            'Creates folder structure\n[mvc,mvvm,mvp,getx,bloc,bloc_app,provider]\nExample: architecture_cli create mvc\nor Example: folder_cli create mvc\nor Example: arch_cli create mvc')
+    ..addFlag('help', negatable: false, abbr: 'h');
+  try {
+    final results = parser.parse(arguments);
+    if (results['create'] != null) {
+      createArchitecture(results['create'].toLowerCase());
+    } else if (results['help']) {
+      print(parser.usage);
+    } else if (results.arguments.isEmpty) {
+      print('''
+    Please provide a desired architecture
+    e.g:  architecture_cli create mvc
+    e.g:  architecture_cli create bloc_app
+    e.g:  architecture_cli create getx
+    Instead of architecture_cli , you use use
+    folder_cli or arch_cli as well
+    e.g: folder_cli create mvvm
+    ''');
+    }
+  } on FormatException catch (e) {
+    print('''
+    Invalid architecture was provided
+    e.g:  architecture_cli create mvc
+    e.g:  architecture_cli create bloc_app
+    e.g:  architecture_cli create getx
+    Instead of architecture_cli , you use use
+    folder_cli or arch_cli as well
+    e.g: folder_cli create mvvm
+    ''');
   }
 }
 
@@ -54,6 +76,9 @@ void createArchitecture(String type) {
     case 'clean_architecture':
     case 'clean_arch_app':
       architecture = _CleanAppArchitectureGenerator();
+      break;
+    default:
+      print("Invalid architecture defined");
       break;
   }
 
