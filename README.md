@@ -28,7 +28,7 @@ To create a new architecture structure, run the following command:
 $ architecture_cli --create [name]
 ```
 
--Alternatively, you can use the following commands:
+- Alternatively, you can use the following commands:
 ```console style="background-color: black;"
 $ folder_cli --create [name]
 ```
@@ -87,6 +87,11 @@ $ architecture_cli --create bloc_app
 If you find this package helpful, please consider buying me a coffee!
 
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hammadparveez)
+
+Thank you for your support!
+![Profile Picture](https://avatars.githubusercontent.com/u/33895363?v=4&s=200){: .rounded-circle}
+
+— Hammad Parveez
 
 
 
