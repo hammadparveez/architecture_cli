@@ -2,6 +2,8 @@
 
 architecture_cli is a command-line interface tool that generates folder structures for different software architecture patterns in Dart. It provides guidelines for each folder's intended purpose to promote good design and separation of concerns.
 
+> **Note:** If the 'lib' directory exists, the architecture will be created inside the 'lib', otherwise it will be created in the root directory.
+
 ## Supported Architectures
 
 architecture_cli currently supports the following software architecture patterns:
@@ -35,7 +37,7 @@ $ folder_cli --create [name]
 ```console style="background-color: black;"
 $ arch_cli --create [name]
 ```
-Where [name] is the name of the desired architecture pattern. For example:
+Where [name] is the name of the desired architecture pattern. For Example:
 
 ```console style="background-color: black;"
 $ architecture_cli --create mvc
