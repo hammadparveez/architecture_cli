@@ -89,9 +89,11 @@ If you find this package helpful, please consider buying me a coffee!
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hammadparveez)
 
 Thank you for your support!
-![Profile Picture](https://avatars.githubusercontent.com/u/33895363?v=4&s=200){: .rounded-circle}
 
 — Hammad Parveez
+
+<a href="https://github.com/hammadparveez/" ><img src="https://avatars.githubusercontent.com/u/33895363?v=4" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;"> </a>
+
 
 
 
