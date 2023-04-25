@@ -95,3 +95,6 @@ Thank you for your support!
 — Hammad Parveez
 
 <a href="https://github.com/hammadparveez/" ><img src="https://avatars.githubusercontent.com/u/33895363?v=4" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;"> </a>
+
+— Visit [devhammad.com](https://devhammad.com/)
+
