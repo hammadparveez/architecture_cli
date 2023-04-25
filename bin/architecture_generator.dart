@@ -3,22 +3,32 @@ part of 'architecture_cli.dart';
 abstract class _ArchitectureGenerator {
   _generate();
   final hasLibDirectory = Directory('lib').existsSync();
-  Directory _generateDirectory(String path) {
-    return Directory(hasLibDirectory ? 'lib/$path' : path)
-      ..createSync(recursive: true);
+  Directory? _generateDirectory(String path) {
+    try {
+      return Directory(hasLibDirectory ? 'lib/$path' : path)
+        ..createSync(recursive: true);
+    } on Exception catch (e) {
+      print(
+          "An error occurred while creating directory, Please make sure you have full access to the directory.");
+    }
   }
 
-  File _generateFile(content, {required String architectureName}) {
-    return File(
-        hasLibDirectory ? 'lib/$architectureName' : '$architectureName.md')
-      ..writeAsString(content);
+  File? _generateFile(content, {required String architectureName}) {
+    try {
+      return File(
+          hasLibDirectory ? 'lib/$architectureName.md' : '$architectureName.md')
+        ..writeAsString(content);
+    } on FileSystemException catch (e) {
+      print(
+          "Sorry! There was an error when generating a architecture guide file.");
+    }
   }
 }
 
 class _BlocArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
-    _generateFile(blocReadMe, architectureName: 'bloc');
     _generateDirectory('bloc');
+    _generateFile(blocReadMe, architectureName: 'bloc');
     final subPaths = ['blocs', 'events', 'states'];
     for (final path in subPaths) _generateDirectory('bloc/$path');
   }
@@ -83,6 +93,7 @@ class _GetXAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _MVCAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(mvcReadMe, architectureName: 'mvc_app');
     _generateDirectory('models');
     _generateDirectory('controllers');
     _generateDirectory('views');
@@ -95,6 +106,7 @@ class _MVCAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _MVVMAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(mvvmReadMe, architectureName: 'mvvm_app');
     _generateDirectory('models');
     _generateDirectory('viewmodels');
     _generateDirectory('views');
@@ -108,6 +120,7 @@ class _MVVMAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _MVPAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(mvpReadMe, architectureName: 'mvp_app');
     _generateDirectory('models');
     _generateDirectory('presenter');
     _generateDirectory('views');
@@ -120,6 +133,7 @@ class _MVPAppArchitectureGenerator extends _ArchitectureGenerator {
 ///
 class _CleanAppArchitectureGenerator extends _ArchitectureGenerator {
   _generate() {
+    _generateFile(cleanArchitectureReadMe, architectureName: 'clean_app');
     _generateDirectory('data');
     _generateDirectory('domain');
     _generateDirectory('presentation');

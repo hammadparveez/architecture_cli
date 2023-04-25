@@ -6,7 +6,11 @@ import 'package:args/args.dart';
 
 import 'readme/bloc_app_readme.dart';
 import 'readme/bloc_readme.dart';
+import 'readme/clean_architecture_readme.dart';
 import 'readme/getx_readme.dart';
+import 'readme/mvc_readme.dart';
+import 'readme/mvp_readme.dart';
+import 'readme/mvvm_readme.dart';
 import 'readme/provider_readme.dart';
 
 part 'architecture_generator.dart';
